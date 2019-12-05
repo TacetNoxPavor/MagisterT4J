@@ -42,7 +42,7 @@ public class MySQLAccess {
     }
 
     private String getLogin0Auth() throws SQLException {
-        return ""
+        return "";
     }
 
     private String readKnightName(ResultSet resultSet) throws SQLException {
