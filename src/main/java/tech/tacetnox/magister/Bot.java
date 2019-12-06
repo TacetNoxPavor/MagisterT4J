@@ -5,10 +5,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
-import tech.tacetnox.magister.features.ChannelNotificationOnDonation;
-import tech.tacetnox.magister.features.ChannelNotificationOnFollow;
-import tech.tacetnox.magister.features.ChannelNotificationOnSubscription;
-import tech.tacetnox.magister.features.WriteChannelChatToConsole;
+import tech.tacetnox.magister.features.*;
 
 
 import java.io.InputStream;
@@ -41,6 +38,7 @@ public class Bot {
         );
         //endregion
 
+        configuration.setDebug(false);
         //region TwitchClient
         twitchClient = clientBuilder
                 .withClientId(configuration.getApi().get("twitch_client_id"))
@@ -81,6 +79,7 @@ public class Bot {
         ChannelNotificationOnFollow channelNotificationOnFollow = new ChannelNotificationOnFollow(twitchClient.getEventManager());
         ChannelNotificationOnSubscription channelNotificationOnSubscription = new ChannelNotificationOnSubscription(twitchClient.getEventManager());
         WriteChannelChatToConsole writeChannelChatToConsole = new WriteChannelChatToConsole(twitchClient.getEventManager());
+        HandleCommandsFromChat handleCommandsFromChat = new HandleCommandsFromChat(twitchClient.getEventManager());
     }
 
     /**
