@@ -26,15 +26,15 @@ bot:
 # Application - API Settings
 api:
   # Twitch Application Client Id
-  twitch_client_id: p6f433iqeua2a3282ghwpxcd3wl4yan
+  twitch_client_id:
 
   # Twitch Application Client Secret
-  twitch_client_secret: 3wgs5fs9vp3nsd8bxkvb15qdwdqb98
+  twitch_client_secret:
 
 # Credentials
 credentials:
   # OAuth Token for IRC USer (You can get yours here: http://twitchapps.com/tmi/)
-  irc: oauth:z2hndylz8c0scaicipqxg2um8d7srr
+  irc:
 
 
 # Channels - The bot will connect to all listed channels
