@@ -5,12 +5,15 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
+import tech.tacetnox.magister.Util.MySQLAccess;
 import tech.tacetnox.magister.features.*;
 
 
 import java.io.InputStream;
 
 public class Bot {
+
+    private MySQLAccess SQL = new MySQLAccess();
 
     /**
      * Holds the Bot Configuration
@@ -74,11 +77,13 @@ public class Bot {
      * Method to register all features
      */
     public void registerFeatures() {
-        // Register Event-based features
+        // Register Event-based features EXAMPLES PULLED FROM BASE BOT
         ChannelNotificationOnDonation channelNotificationOnDonation = new ChannelNotificationOnDonation(twitchClient.getEventManager());
         ChannelNotificationOnFollow channelNotificationOnFollow = new ChannelNotificationOnFollow(twitchClient.getEventManager());
         ChannelNotificationOnSubscription channelNotificationOnSubscription = new ChannelNotificationOnSubscription(twitchClient.getEventManager());
-        WriteChannelChatToConsole writeChannelChatToConsole = new WriteChannelChatToConsole(twitchClient.getEventManager());
+        //WriteChannelChatToConsole writeChannelChatToConsole = new WriteChannelChatToConsole(twitchClient.getEventManager());
+
+        //Chat handling made by me
         HandleCommandsFromChat handleCommandsFromChat = new HandleCommandsFromChat(twitchClient.getEventManager());
     }
 
