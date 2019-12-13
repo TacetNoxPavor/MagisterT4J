@@ -21,7 +21,7 @@ bot:
   name: "Magister ChatBot"
 
   # Current version of your bot
-  version: "0.1"
+  version: "0.0.3"
 
 # Application - API Settings
 api:

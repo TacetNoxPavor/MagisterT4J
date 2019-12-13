@@ -1,7 +1,7 @@
 
 plugins {
     // Add a shadowJar task to build a fatJar: build/libs/twitch4j-chatbot-all.jar
-    id 'com.github.johnrengelman.shadow' version '2.0.2'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
     id 'java'
     id 'application'
 }
@@ -9,8 +9,11 @@ plugins {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+group 'tech.tacetnox'
 // Sets the Main-Class in the shadowJar manifest
 mainClassName = 'tech.tacetnox.magister.BotLauncher'
+
+version '0.0.3'
 
 // Repositories
 repositories {
@@ -23,7 +26,7 @@ dependencies {
     //MySQL Connector
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
     // Twitch4J
-    compile "com.github.twitch4j:twitch4j:1.0.0-alpha.7"
+    compile "com.github.twitch4j:twitch4j:1.0.0-alpha.17"
 
     // YAML Parser
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.0"
@@ -31,4 +34,9 @@ dependencies {
     // Logging
     compile "ch.qos.logback:logback-classic:1.1.8"
     compile "com.jcabi:jcabi-log:0.17.2"
+    compile "com.squareup.okhttp:okhttp:2.5.0"
 }
+
+
+compileJava.options.encoding = 'UTF-8'
+shadowJar.archiveFileName = 'MagisterT4J.' + version + ".jar"
