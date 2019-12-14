@@ -13,8 +13,6 @@ import java.io.InputStream;
 
 public class Bot {
 
-    private MySQLAccess SQL = new MySQLAccess();
-
     /**
      * Holds the Bot Configuration
      */
@@ -41,7 +39,7 @@ public class Bot {
         );
         //endregion
 
-        configuration.setDebug(false);
+        configuration.setDebug(true);
         //region TwitchClient
         twitchClient = clientBuilder
                 .withClientId(configuration.getApi().get("twitch_client_id"))
@@ -76,7 +74,7 @@ public class Bot {
     /**
      * Method to register all features
      */
-    public void registerFeatures() {
+    public void registerFeatures() throws Exception {
         // Register Event-based features EXAMPLES PULLED FROM BASE BOT
         ChannelNotificationOnDonation channelNotificationOnDonation = new ChannelNotificationOnDonation(twitchClient.getEventManager());
         ChannelNotificationOnFollow channelNotificationOnFollow = new ChannelNotificationOnFollow(twitchClient.getEventManager());
@@ -84,7 +82,7 @@ public class Bot {
         //WriteChannelChatToConsole writeChannelChatToConsole = new WriteChannelChatToConsole(twitchClient.getEventManager());
 
         //Chat handling made by me
-        HandleCommandsFromChat handleCommandsFromChat = new HandleCommandsFromChat(twitchClient.getEventManager());
+        HandleCommandsFromChat handleCommandsFromChat = new HandleCommandsFromChat(twitchClient.getEventManager(), configuration);
     }
 
     /**
